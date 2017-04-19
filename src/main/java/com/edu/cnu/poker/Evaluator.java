@@ -62,8 +62,10 @@ public class Evaluator {
                         return "TWO PAIR";
                     }
                 }
+                if(value==3){
+                    return "TRIPLE";
+                }
             }
-
         }
         return "NOTHING";
     }
