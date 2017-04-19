@@ -34,14 +34,15 @@ public class Evaluator {
                 rankMap.put(card.getRank(), new Integer(1));
             }
         }
-        if (rankMap.size() == cardList.size()) {
-            return "HIGH CARD";
-        }
 
         for (Suit key : suitMap.keySet()) {
             if (suitMap.get(key) == 5) {
                 return "FLUSH";
             }
+        }
+
+        if (rankMap.size() == cardList.size()) {
+            return "HIGH CARD";
         }
         return "NOTHING";
     }
