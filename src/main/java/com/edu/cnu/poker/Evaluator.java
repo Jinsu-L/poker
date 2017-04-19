@@ -44,6 +44,14 @@ public class Evaluator {
         if (rankMap.size() == cardList.size()) {
             return "HIGH CARD";
         }
+
+        if(rankMap.size()+1 == cardList.size() ){
+            for(int value:rankMap.values()){
+                if(value==2){
+                    return "ONE PAIR";
+                }
+            }
+        }
         return "NOTHING";
     }
 }
