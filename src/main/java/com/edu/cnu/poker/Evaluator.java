@@ -45,7 +45,7 @@ public class Evaluator {
                 return "STRAIGHT";
             }
             if (suitMap.size() == 1) {
-                if(cardList.get(0).getRank()==1 && cardList.get(1).getRank()==10){
+                if (cardList.get(0).getRank() == 1 && cardList.get(1).getRank() == 10) {
                     return "ROYAL FLUSH";
                 }
                 return "FLUSH";
@@ -76,20 +76,10 @@ public class Evaluator {
         }
 
         if (rankMap.size() == 2) {
-            boolean pair = false;
-            boolean triple = false;
             for (int value : rankMap.values()) {
-                if (value == 2) {
-                    pair = true;
-                }
-                if (value == 3) {
-                    triple = true;
-                }
                 if (value == 4) {
                     return "FOUR CARD";
                 }
-            }
-            if (pair && triple) {
                 return "FULL HOUSE";
             }
         }
