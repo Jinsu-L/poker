@@ -52,6 +52,19 @@ public class Evaluator {
                 }
             }
         }
+
+        if(rankMap.size()+2 == cardList.size() ){
+            int count=0;
+            for(int value:rankMap.values()){
+                if(value==2){
+                    count++;
+                    if(count==2){
+                        return "TWO PAIR";
+                    }
+                }
+            }
+
+        }
         return "NOTHING";
     }
 }
