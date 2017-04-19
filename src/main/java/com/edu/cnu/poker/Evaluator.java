@@ -2,6 +2,7 @@ package com.edu.cnu.poker;
 
 import lombok.Data;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,12 +37,22 @@ public class Evaluator {
         }
 
         if (rankMap.size() == 5) {
-            if(suitMap.size()==1){
+            Collections.sort(cardList);
+            if (cardList.get(4).getRank() - cardList.get(0).getRank() == 4) {
+                if (suitMap.size() == 1) {
+                    return "STRAIGHT FLUSH";
+                }
+                return "STRAIGHT";
+            }
+            if (suitMap.size() == 1) {
+                if(cardList.get(0).getRank()==1 && cardList.get(1).getRank()==10){
+                    return "ROYAL FLUSH";
+                }
                 return "FLUSH";
             }
         }
 
-        if (rankMap.size()  == 4) {
+        if (rankMap.size() == 4) {
             for (int value : rankMap.values()) {
                 if (value == 2) {
                     return "ONE PAIR";
@@ -64,7 +75,7 @@ public class Evaluator {
             }
         }
 
-        if (rankMap.size()== 2) {
+        if (rankMap.size() == 2) {
             boolean pair = false;
             boolean triple = false;
             for (int value : rankMap.values()) {
