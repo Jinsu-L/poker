@@ -78,6 +78,9 @@ public class Evaluator {
                 if(value==3){
                     triple=true;
                 }
+                if(value==4){
+                    return "FOUR CARD";
+                }
             }
             if(pair&&triple){
                 return "FULL HOUSE";
