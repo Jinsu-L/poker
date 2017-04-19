@@ -67,6 +67,22 @@ public class Evaluator {
                 }
             }
         }
+
+        if(rankMap.size()+3==cardList.size()){
+            boolean pair=false;
+            boolean triple=false;
+            for(int value:rankMap.values()){
+                if(value==2){
+                    pair=true;
+                }
+                if(value==3){
+                    triple=true;
+                }
+            }
+            if(pair&&triple){
+                return "FULL HOUSE";
+            }
+        }
         return "NOTHING";
     }
 }
