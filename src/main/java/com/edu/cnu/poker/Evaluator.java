@@ -12,20 +12,34 @@ import java.util.Map;
 @Data
 public class Evaluator {
     public String evaluate(List<Card> cardList) {
-        Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
+        Map<Suit, Integer> suitMap = new HashMap<Suit, Integer>();
+        Map<Integer, Integer> rankMap = new HashMap<Integer, Integer>();
 
         for (Card card : cardList) {
-            if (tempMap.containsKey(card.getSuit())) {
-                Integer count = tempMap.get(card.getSuit());
+            if (suitMap.containsKey(card.getSuit())) {
+                Integer count = suitMap.get(card.getSuit());
                 count = new Integer(count.intValue() + 1);
-                tempMap.put(card.getSuit(), count);
+                suitMap.put(card.getSuit(), count);
             } else {
-                tempMap.put(card.getSuit(), new Integer(1));
+                suitMap.put(card.getSuit(), new Integer(1));
             }
         }
 
-        for (Suit key : tempMap.keySet()) {
-            if (tempMap.get(key) == 5) {
+        for (Card card : cardList) {
+            if (rankMap.containsKey(card.getRank())) {
+                Integer count = rankMap.get(card.getRank());
+                count = new Integer(count.intValue() + 1);
+                rankMap.put(card.getRank(), count);
+            } else {
+                rankMap.put(card.getRank(), new Integer(1));
+            }
+        }
+        if (rankMap.size() == cardList.size()) {
+            return "HIGH CARD";
+        }
+
+        for (Suit key : suitMap.keySet()) {
+            if (suitMap.get(key) == 5) {
                 return "FLUSH";
             }
         }

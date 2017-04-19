@@ -12,6 +12,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Created by cse on 2017-04-17.
  */
 public class EvaluatorTest {
+    @Test
+    public void 아무런_조합도_가능하지_않을경우_하이카드이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1, Suit.CLUBS),
+                new Card(8, Suit.DIAMONDS),
+                new Card(5, Suit.HEARTS),
+                new Card(2, Suit.SPADES),
+                new Card(13, Suit.DIAMONDS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("HIGH CARD"));
+    }
 
     @Test
     public void 값이_같은_2장의_카드는_원페어이다() {
@@ -24,7 +37,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("Four Card"));
+        assertThat(result, is("ONE PAIR"));
     }
 
     @Test
@@ -38,7 +51,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("Four Card"));
+        assertThat(result, is("TWO PAIR"));
     }
 
     @Test
@@ -52,7 +65,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("Four Card"));
+        assertThat(result, is("TRIPLE"));
     }
 
     @Test
@@ -66,7 +79,7 @@ public class EvaluatorTest {
                 new Card(7, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("Four Card"));
+        assertThat(result, is("STRAIGHT"));
     }
 
     @Test
@@ -94,7 +107,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("Four Card"));
+        assertThat(result, is("FULL HOUSE"));
     }
 
     @Test
@@ -108,7 +121,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("Four Card"));
+        assertThat(result, is("FOUR CARD"));
     }
 
     @Test
@@ -122,11 +135,11 @@ public class EvaluatorTest {
                 new Card(9, Suit.CLUBS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("Four Card"));
+        assertThat(result, is("STRAIGHT FLUSH"));
     }
 
     @Test
-    public void 스트레이트_플러쉬가_10부터_에이스까지_연속이면_로열플러시이다() {
+    public void 스트레이트_플러쉬가_10부터_에이스까지_연속이면_로얄플러시이다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
                 new Card(10, Suit.CLUBS),
@@ -136,20 +149,8 @@ public class EvaluatorTest {
                 new Card(1, Suit.CLUBS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("Four Card"));
+        assertThat(result, is("ROYAL FLUSH"));
     }
 
-    @Test
-    public void 아무런_조합도_가능하지_않을경우_하이카드이다() {
-        Evaluator evaluator = new Evaluator();
-        List<Card> cardList = Arrays.asList(
-                new Card(1, Suit.CLUBS),
-                new Card(8, Suit.DIAMONDS),
-                new Card(5, Suit.HEARTS),
-                new Card(2, Suit.SPADES),
-                new Card(13, Suit.DIAMONDS)
-        );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("Four Card"));
-    }
+
 }
