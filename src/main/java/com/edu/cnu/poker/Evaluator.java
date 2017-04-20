@@ -2,6 +2,7 @@ package com.edu.cnu.poker;
 
 import lombok.Data;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,57 +36,53 @@ public class Evaluator {
             }
         }
 
-        for (Suit key : suitMap.keySet()) {
-            if (suitMap.get(key) == 5) {
+        if (rankMap.size() == 5) {
+            Collections.sort(cardList);
+            if (cardList.get(4).getRank() - cardList.get(0).getRank() == 4) {
+                if (suitMap.size() == 1) {
+                    return "STRAIGHT FLUSH";
+                }
+                return "STRAIGHT";
+            }
+            if (suitMap.size() == 1) {
+                if (cardList.get(0).getRank() == 1 && cardList.get(1).getRank() == 10) {
+                    return "ROYAL FLUSH";
+                }
                 return "FLUSH";
             }
         }
 
-        if (rankMap.size() == cardList.size()) {
-            return "HIGH CARD";
-        }
-
-        if(rankMap.size()+1 == cardList.size() ){
-            for(int value:rankMap.values()){
-                if(value==2){
+        if (rankMap.size() == 4) {
+            for (int value : rankMap.values()) {
+                if (value == 2) {
                     return "ONE PAIR";
                 }
             }
         }
 
-        if(rankMap.size()+2 == cardList.size() ){
-            int count=0;
-            for(int value:rankMap.values()){
-                if(value==2){
+        if (rankMap.size() == 3) {
+            int count = 0;
+            for (int value : rankMap.values()) {
+                if (value == 2) {
                     count++;
-                    if(count==2){
+                    if (count == 2) {
                         return "TWO PAIR";
                     }
                 }
-                if(value==3){
+                if (value == 3) {
                     return "TRIPLE";
                 }
             }
         }
 
-        if(rankMap.size()+3==cardList.size()){
-            boolean pair=false;
-            boolean triple=false;
-            for(int value:rankMap.values()){
-                if(value==2){
-                    pair=true;
-                }
-                if(value==3){
-                    triple=true;
-                }
-                if(value==4){
+        if (rankMap.size() == 2) {
+            for (int value : rankMap.values()) {
+                if (value == 4) {
                     return "FOUR CARD";
                 }
-            }
-            if(pair&&triple){
                 return "FULL HOUSE";
             }
         }
-        return "NOTHING";
+        return "HIGH CARD";
     }
 }

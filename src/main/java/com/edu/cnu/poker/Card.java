@@ -1,5 +1,6 @@
 package com.edu.cnu.poker;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -18,6 +19,8 @@ public class Card implements Comparable<Card>{
             throw new NoSuchRankException();
         }
     }
+
+
 
     public int compareTo(Card o) {
         return this.getRank() - o.getRank();
