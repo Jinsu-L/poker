@@ -23,7 +23,7 @@ public class EvaluatorTest {
                 new Card(13, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("HIGH CARD"));
+        assertThat(result, is(Ranking.HIGHCARD);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("ONE PAIR"));
+        assertThat(result, is(Ranking.ONEPAIR);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("TWO PAIR"));
+        assertThat(result, is(Ranking.TWOPAIR);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("TRIPLE"));
+        assertThat(result, is(Ranking.TRIPLE);
     }
 
     @Test
@@ -79,7 +79,7 @@ public class EvaluatorTest {
                 new Card(7, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("STRAIGHT"));
+        assertThat(result, is(Ranking.STRAIGHT);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class EvaluatorTest {
                 new Card(2, Suit.CLUBS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("FLUSH"));
+        assertThat(result, is(Ranking.FLUSH);
     }
 
     @Test
@@ -107,7 +107,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("FULL HOUSE"));
+        assertThat(result, is(Ranking.FULLHOUSE);
     }
 
     @Test
@@ -121,7 +121,7 @@ public class EvaluatorTest {
                 new Card(10, Suit.DIAMONDS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("FOUR CARD"));
+        assertThat(result, is(Ranking.FOURCARD);
     }
 
     @Test
@@ -135,7 +135,7 @@ public class EvaluatorTest {
                 new Card(9, Suit.CLUBS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("STRAIGHT FLUSH"));
+        assertThat(result, is(Ranking.STRAIGHTFLUSH);
     }
 
     @Test
@@ -149,7 +149,7 @@ public class EvaluatorTest {
                 new Card(1, Suit.CLUBS)
         );
         String result = evaluator.evaluate(cardList);
-        assertThat(result, is("ROYAL FLUSH"));
+        assertThat(result, is(Ranking.ROYALFLUSH);
     }
 
 
