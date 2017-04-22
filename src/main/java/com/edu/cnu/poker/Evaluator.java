@@ -12,7 +12,7 @@ import java.util.Map;
  */
 @Data
 public class Evaluator {
-    public String evaluate(List<Card> cardList) {
+    public Ranking evaluate(List<Card> cardList) {
         Map<Suit, Integer> suitMap = new HashMap<Suit, Integer>();
         Map<Integer, Integer> rankMap = new HashMap<Integer, Integer>();
 
@@ -40,22 +40,22 @@ public class Evaluator {
             Collections.sort(cardList);
             if (cardList.get(4).getRank() - cardList.get(0).getRank() == 4) {
                 if (suitMap.size() == 1) {
-                    return "STRAIGHT FLUSH";
+                    return Ranking.STRAIGHTFLUSH;
                 }
-                return "STRAIGHT";
+                return Ranking.STRAIGHT;
             }
             if (suitMap.size() == 1) {
                 if (cardList.get(0).getRank() == 1 && cardList.get(1).getRank() == 10) {
-                    return "ROYAL FLUSH";
+                    return Ranking.ROYALFLUSH;
                 }
-                return "FLUSH";
+                return Ranking.FLUSH;
             }
         }
 
         if (rankMap.size() == 4) {
             for (int value : rankMap.values()) {
                 if (value == 2) {
-                    return "ONE PAIR";
+                    return Ranking.ONEPAIR;
                 }
             }
         }
@@ -66,11 +66,11 @@ public class Evaluator {
                 if (value == 2) {
                     count++;
                     if (count == 2) {
-                        return "TWO PAIR";
+                        return Ranking.TWOPAIR;
                     }
                 }
                 if (value == 3) {
-                    return "TRIPLE";
+                    return Ranking.TRIPLE;
                 }
             }
         }
@@ -78,11 +78,11 @@ public class Evaluator {
         if (rankMap.size() == 2) {
             for (int value : rankMap.values()) {
                 if (value == 4) {
-                    return "FOUR CARD";
+                    return Ranking.FOURCARD;
                 }
-                return "FULL HOUSE";
+                return Ranking.FULLHOUSE;
             }
         }
-        return "HIGH CARD";
+        return Ranking.HIGHCARD;
     }
 }
