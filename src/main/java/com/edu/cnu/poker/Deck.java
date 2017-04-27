@@ -39,7 +39,7 @@ public class Deck {
     }
 
     public Card drawCard() {
-        if (cardList.size() == 0) {
+        if (cardList.isEmpty()) {
             throw new NoMoreCardException();
         }
         return cardList.remove(0);
