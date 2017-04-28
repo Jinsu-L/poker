@@ -13,8 +13,8 @@ import java.util.Map;
 @Data
 public class Evaluator {
     public Ranking evaluate(List<Card> cardList) {
-        Map<Suit, Integer> suitMap = new HashMap<Suit, Integer>();
-        Map<Integer, Integer> rankMap = new HashMap<Integer, Integer>();
+        Map<Suit, Integer> suitMap = new HashMap<>();
+        Map<Rank, Integer> rankMap = new HashMap<>();
 
         for (Card card : cardList) {
             Suit suit = card.getSuit();
@@ -23,21 +23,21 @@ public class Evaluator {
         }
 
         for (Card card : cardList) {
-            int rank = card.getRank();
+            Rank rank = card.getRank();
             Integer count = rankMap.getOrDefault(rank, 0);
             rankMap.put(rank, count + 1);
         }
 
         if (rankMap.size() == 5) {
             Collections.sort(cardList);
-            if (cardList.get(4).getRank() - cardList.get(0).getRank() == 4) {
+            if (cardList.get(4).getRank().getValue() - cardList.get(0).getRank().getValue() == 4) {
                 if (suitMap.size() == 1) {
                     return Ranking.STRAIGHTFLUSH;
                 }
                 return Ranking.STRAIGHT;
             }
             if (suitMap.size() == 1) {
-                if (cardList.get(0).getRank() == 1 && cardList.get(1).getRank() == 10) {
+                if (cardList.get(0).getRank().getValue() == 1 && cardList.get(1).getRank().getValue() == 10) {
                     return Ranking.ROYALFLUSH;
                 }
                 return Ranking.FLUSH;

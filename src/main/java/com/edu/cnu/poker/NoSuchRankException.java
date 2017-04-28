@@ -1,7 +1,7 @@
 package com.edu.cnu.poker;
 
 /**
- * Created by cse on 2017-04-17.
+ * Created by user on 2017-04-28.
  */
 public class NoSuchRankException extends RuntimeException {
 }

@@ -13,7 +13,7 @@ public class CardTest {
     @Test
     public void 카드_5_다이아몬드_생성() {
         Card card = new Card(5, Suit.DIAMONDS);
-        assertThat(card.getRank(), is(5));
+        assertThat(card.getRank(), is(Rank.FIVE));
         assertThat(card.getSuit(), is(Suit.DIAMONDS));
     }
 

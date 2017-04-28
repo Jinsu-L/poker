@@ -7,19 +7,21 @@ import lombok.Data;
  */
 @Data
 public class Card implements Comparable<Card> {
-    private int rank;
+    private Rank rank;
     private Suit suit;
 
-    public Card(int rank, Suit suit) {
+    public Card(Rank rank, Suit suit) {
         this.rank = rank;
         this.suit = suit;
-        if (rank < 1 || rank > 13) {
-            throw new NoSuchRankException();
-        }
+    }
+
+    public Card(int value, Suit suit) {
+        this.rank = Rank.getRankByValue(value);
+        this.suit = suit;
     }
 
 
     public int compareTo(Card o) {
-        return this.getRank() - o.getRank();
+        return this.rank.getValue() - o.rank.getValue();
     }
 }
