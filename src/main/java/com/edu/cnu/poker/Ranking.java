@@ -15,10 +15,10 @@ public enum Ranking {
     STRAIGHTFLUSH("STRAIGHTFLUSH"),
     ROYALFLUSH("ROYALFLUSH");
 
-    private String strOfRanking;
+    private String name;
 
-    Ranking(String strOfRanking) {
-        this.strOfRanking = strOfRanking;
+    Ranking(String name) {
+        this.name = name;
     }
 
 }

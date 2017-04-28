@@ -17,16 +17,16 @@ public class Deck {
 
     public Deck(int numberOfDeck) {
         this.numberOfDeck = numberOfDeck;
-        this.cardList = new ArrayList<Card>();
+        this.cardList = new ArrayList<>();
         createCard(numberOfDeck);
     }
 
     private void createCard(int numberOfDeck) {
-        // card 생성해보자
+        //card 생성
         for (int j = 0; j < numberOfDeck; j++) {
             for (Suit suit : Suit.values()) {
-                for (int i = 1; i < 14; i++) {
-                    Card card = new Card(i, suit);
+                for (Rank rank : Rank.values()) {
+                    Card card = new Card(rank, suit);
                     cardList.add(card);
                 }
             }
@@ -39,7 +39,7 @@ public class Deck {
     }
 
     public Card drawCard() {
-        if (cardList.size() == 0) {
+        if (cardList.isEmpty()) {
             throw new NoMoreCardException();
         }
         return cardList.remove(0);
