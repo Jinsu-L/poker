@@ -3,7 +3,7 @@ package com.edu.cnu.poker;
 import lombok.Data;
 
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +13,8 @@ import java.util.Map;
 @Data
 public class Evaluator {
     public Ranking evaluate(List<Card> cardList) {
-        Map<Suit, Integer> suitMap = new HashMap<>();
-        Map<Rank, Integer> rankMap = new HashMap<>();
+        Map<Suit, Integer> suitMap = new EnumMap<>(Suit.class);
+        Map<Rank, Integer> rankMap = new EnumMap<>(Rank.class);
 
         for (Card card : cardList) {
             Suit suit = card.getSuit();

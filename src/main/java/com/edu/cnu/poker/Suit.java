@@ -8,9 +8,14 @@ public enum Suit {
     HEARTS("Hearts"),
     CLUBS("Clubs"),
     DIAMONDS("Diamonds");
-    String name;
+
+    private String name;
 
     Suit(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -17,7 +17,7 @@ public class Deck {
 
     public Deck(int numberOfDeck) {
         this.numberOfDeck = numberOfDeck;
-        this.cardList = new ArrayList<Card>();
+        this.cardList = new ArrayList<>();
         createCard(numberOfDeck);
     }
 
